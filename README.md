@@ -1,1 +1,1 @@
-# sql_injection_class_activity
+# SQL me once, shame on you. SQL me twice, DROP TABLES!
