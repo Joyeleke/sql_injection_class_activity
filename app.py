@@ -14,8 +14,6 @@ def init_db():
             password TEXT NOT NULL
         )
     """)
-    # Pre-populate an admin user
-    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (1, 'admin', 'admin123')")
     conn.commit()
     conn.close()
 
