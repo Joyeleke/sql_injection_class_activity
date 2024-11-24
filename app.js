@@ -23,32 +23,3 @@ app.get("/", (req, res) => {
     `);
 });
 
-// Insecure Login Endpoint (Vulnerable to SQL Injection)
-app.post("/login", (req, res) => {
-    const { username, password } = req.body;
-
-    // Vulnerable SQL Query
-    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
-
-    console.log("Executing Query:", query);
-
-    db.all(query, (err, row) => {
-        if (err) {
-            console.error("Database Error:", err);
-            return res.status(500).send("Internal Server Error!");
-        }
-
-        if (row) {
-            res.send(`Welcome, ${row.username}!`);
-        } else {
-            res.status(401).send("Invalid credentials!");
-        }
-    });
-});
-
-// Start the server
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`SQL Injection Demo running on http://localhost:${PORT}`);
-});
-
