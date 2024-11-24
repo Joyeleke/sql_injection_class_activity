@@ -14,6 +14,7 @@ def init_db():
             password TEXT NOT NULL
         )
     """)
+    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (1, 'admin', 'admin123')")
     conn.commit()
     conn.close()
 
