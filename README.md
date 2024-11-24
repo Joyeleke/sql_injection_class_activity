@@ -7,8 +7,7 @@ This repository demonstrates how SQL Injection attacks work, allowing students t
 | File                | Description                                                                                      |
 |---------------------|--------------------------------------------------------------------------------------------------|
 | `app.py`            | A Flask-based backend application to demonstrate SQL injection attacks with registration and login endpoints. |
-| `database.js`       | A Node.js module for initializing an SQLite database, creating a `users` table, and populating initial data. |
-| `app.js`            | A Node.js application demonstrating a vulnerable SQL login system using raw SQL queries.        |
+| `database.js`       | A Node.js module for initializing an SQLite database, creating a `users` table, and populating initial data. |      
 | `database.db`       | Pre-populated SQLite database containing sample users for testing.                              |
 | `Makefile`          | Commands to simplify setting up and running the Python backend.                                  |
 

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template_string
 import sqlite3
 
 app = Flask(__name__)
@@ -17,6 +17,24 @@ def init_db():
     cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (1, 'admin', 'admin123')")
     conn.commit()
     conn.close()
+
+# Home route serving the login form
+@app.route('/', methods=['GET'])
+def home():
+    form_html = """
+    <h1>SQL Injection Demo</h1>
+    <p>Try logging in with insecure inputs to see how SQL injection works.</p>
+    <form method="POST" action="/login">
+        <label>Username:</label>
+        <input type="text" name="username" />
+        <br>
+        <label>Password:</label>
+        <input type="text" name="password" />
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    """
+    return render_template_string(form_html)
 
 # Registration endpoint
 @app.route('/register', methods=['POST'])
@@ -44,9 +62,8 @@ def register():
 # Login endpoint
 @app.route('/login', methods=['POST'])
 def login():
-    data = request.json
-    username = data.get('username')
-    password = data.get('password')
+    username = request.form.get('username')
+    password = request.form.get('password')
 
     if not username or not password:
         return jsonify({"error": "Username and password are required!"}), 400
@@ -69,4 +86,4 @@ def login():
 
 if __name__ == '__main__':
     init_db()  # Initialize the database with sample data
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5001)
