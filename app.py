@@ -86,4 +86,9 @@ def login():
 
 if __name__ == '__main__':
     init_db()  # Initialize the database with sample data
+    # Running on different addresses:
+    # - '0.0.0.0' makes the app accessible from any network interface (local and external)
+    # - '127.0.0.1' is the local loopback address, accessible only from the same machine
+    # - '<local_network_IP>' allows access from other devices on the same network
     app.run(debug=True, host='0.0.0.0', port=5001)
+
