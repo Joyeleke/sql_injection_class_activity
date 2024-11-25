@@ -1,5 +1,5 @@
 # Define variables
-PYTHON = python
+PYTHON = python3
 APP = app.py
 
 # Default action (runs the app)
@@ -16,15 +16,15 @@ init_db:
 # Clean up temporary files
 clean:
 	@echo "Cleaning up..."
-	rm -f users.db
+	rm -f database.db
 	@echo "Clean up complete."
 
 # Install dependencies
 install:
 	@echo "Installing required Python dependencies..."
-	pip install flask
-	pip install sqlalchemy
-	pip install mysql-connector-python
+	$(PYTHON) -m pip install flask
+	$(PYTHON) -m pip install sqlalchemy
+	$(PYTHON) -m pip install mysql-connector-python
 	@echo "Dependencies installed."
 
 # Help menu
