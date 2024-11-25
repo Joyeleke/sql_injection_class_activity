@@ -25,9 +25,7 @@ This repository demonstrates how SQL Injection attacks work, allowing students t
 ### Node.js Application
 - **Database Initialization (`database.js`)**:
   - Creates an SQLite database and pre-populates the `users` table.
-- **Vulnerable Login System (`app.js`)**:
-  - Demonstrates SQL injection attacks using a deliberately insecure query.
-
+ 
 ## Setup Instructions
 
 ### Python Flask Application
